@@ -1,0 +1,43 @@
+&star_job
+! see star/defaults/star_job.defaults
+    create_pre_main_sequence_model = .true.
+  ! save a model at the end of the run
+    save_model_when_terminate = .true.
+    save_model_filename = $OUTPUT_MOD
+    save_model_when_terminate = .true.
+    filename_for_profile_when_terminate = 'ms.data'
+
+
+    pgstar_flag = .false.
+/ ! end of star_job namelist
+
+&eos
+  ! eos options
+  ! see eos/defaults/eos.defaults
+/  ! end of eos namelist
+
+&kap
+  ! kap options
+  ! see kap/defaults/kap.defaults
+  use_Type2_opacities = .true.
+  Zbase = 0.02
+
+/ ! end of kap namelist
+
+&controls
+  initial_mass = $INIT_MASS
+  initial_z = 0.014
+  initial_Y = 0.2703
+
+  history_interval = 1
+  terminal_interval = 10
+  write_header_frequency = 10
+  !min_timestep_limit = 1d-12
+  !max_years_for_timestep=4.7E6
+  !delta_lg_star_mass_limit=1.0d-11
+  !log10(deltaM/M); default is 5.6d-3
+
+  ! when to stop
+  stop_near_zams = .true.
+
+/ ! end of controls namelist
